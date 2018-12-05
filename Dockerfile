@@ -15,6 +15,8 @@ WORKDIR /opt/tomcat
 RUN wget --cache=off  http://yum.longcloud.tech:99/release/infra/tomcat/tomcat-base-8.5.12.zip
 RUN unzip tomcat-base-8.5.12.zip
 
+WORKDIR /opt/tomcat/webapps
+
 # 拷贝程序包
 ADD ./target/helloworld-k8s.war /opt/tomcat/webapps
 RUN unzip -o -d /opt/tomcat/webapps/helloworld-k8s  helloworld-k8s.war && rm -rf helloworld-k8s.war
