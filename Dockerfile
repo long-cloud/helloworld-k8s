@@ -14,7 +14,7 @@ RUN mkdir /opt/tomcat
 WORKDIR /opt/tomcat
 RUN wget --cache=off  http://yum.longcloud.tech:99/release/infra/tomcat/tomcat-base-8.5.12.zip
 RUN unzip tomcat-base-8.5.12.zip
-RUN +x chmod bin/*.sh
+RUN chmod +x bin/*.sh
 
 WORKDIR /opt/tomcat/webapps
 
