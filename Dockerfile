@@ -14,6 +14,7 @@ RUN mkdir /opt/tomcat
 WORKDIR /opt/tomcat
 RUN wget --cache=off  http://yum.longcloud.tech:99/release/infra/tomcat/tomcat-base-8.5.12.zip
 RUN unzip tomcat-base-8.5.12.zip
+RUN +x chmod bin/*.sh
 
 WORKDIR /opt/tomcat/webapps
 
@@ -25,4 +26,4 @@ RUN unzip -o -d /opt/tomcat/webapps/helloworld-k8s  helloworld-k8s.war && rm -rf
 EXPOSE 8080
 
 # 启动容器执行的命令
-CMD bash /opt/apache-tomcat/bin/catalina.sh run
+CMD bash /opt/tomcat/bin/catalina.sh run
