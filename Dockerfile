@@ -1,4 +1,4 @@
-FROM registry.longcloud.tech:96/library/centos:7.0
+FROM kubernetes-master:5000/library/centos:7.0
 
 # 安装jdk,unzip
 RUN yum makecache fast && yum install -y java-1.8.0-openjdk && yum install -y wget && yum install -y unzip && yum clean all
@@ -12,7 +12,7 @@ ENV TZ=Asia/Shanghai
 # 安装tomcat
 RUN mkdir /opt/tomcat
 WORKDIR /opt/tomcat
-RUN wget --cache=off  http://yum.longcloud.tech:99/release/infra/tomcat/tomcat-base-8.5.12.zip
+ADD ./tomcat8/tomcat-base-8.5.12.zip /opt/tomcat/
 RUN unzip tomcat-base-8.5.12.zip
 RUN chmod +x bin/*.sh
 
